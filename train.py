@@ -45,7 +45,7 @@ def L_layer_model(X, Y, layers_dims, learning_rate = 0.0075, num_iterations = 30
         grads = L_model_backward(AL, Y, caches)
         parameters = update_parameters(parameters, grads, learning_rate)
         if print_cost and i % 100 == 0 or i == num_iterations - 1:
-            print("Cost after iteration {}: {}".format(i, np.squeeze(cost)))
+            print(f"Cost after iteration {i}: {np.squeeze(cost)}")
         if i % 100 == 0 or i == num_iterations:
             costs.append(cost)
     return parameters, costs

@@ -8,8 +8,7 @@ import io
 def get_img(src):
     response = requests.get(src)
     image_bytes = io.BytesIO(response.content)
-    img = Image.open(image_bytes).convert("RGB")
-    return img
+    return Image.open(image_bytes).convert("RGB")
 
 img_ext = ["png", "jpg", "jpeg", "webp", "gif", "bmp", "ico", "tiff"]
 
@@ -29,6 +28,6 @@ async def on_message(message):
         if a.filename.lower().split('.')[-1] in img_ext:
             img = get_img(a.url)
             p = check_img(img)*100
-            await message.reply(str(p)+"% cat!")
+            await message.reply(f"{str(p)}% cat!")
 
 client.run(sys.argv[1])
